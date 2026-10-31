@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Резюме Остапа Левинця">
+    <title>Остап Левинець — резюме</title>
+    <!-- External CSS: основне оформлення сторінки. -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Internal CSS: приклад внутрішньої таблиці стилів. -->
+    <style>
+        .subtitle { letter-spacing: 0.04em; }
+    </style>
+    <script type="module" src="script.js"></script>
+</head>
+<body>
+    <header id="top" class="profile-header">
+        <p class="eyebrow">Резюме / Особистий профіль</p>
+        <h1>Остап Левинець</h1>
+        <!-- Inline CSS: один локальний стиль для демонстрації. -->
+        <p class="subtitle" style="color: #a7f3d0;">Студент кібербезпеки</p>
+
+        <div class="controls"><button id="theme-toggle" type="button">Змінити тему</button><button id="theme-auto" type="button">Тема за часом</button><button id="contact-open" type="button">Зв’язатися</button><span id="theme-status"></span></div>
+        <nav aria-label="Розділи резюме">
+            <ul>
+                <li><a href="#about">Про мене</a></li>
+                <li><a href="#education">Освіта</a></li>
+                <li><a href="#skills">Навички</a></li>
+                <li><a href="#experience">Практичний досвід</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="about" class="card">
+            <h2>Про мене</h2>
+            <p>
+                Я — Остап Левинець, студент Національного університету
+                «Львівська політехніка». Навчаюся за напрямом кібербезпеки.
+                Вмію працювати з Python та C#, вивчав вебтехнології
+                та пробував розробляти сайти.
+            </p>
+        </section>
+
+        <section id="education" class="card">
+            <h2>Освіта</h2>
+            <h3>Національний університет «Львівська політехніка»</h3>
+            <p>Напрям навчання: кібербезпека.</p>
+            <p>Статус: навчаюся.</p>
+        </section>
+
+        <section id="skills" class="card">
+            <h2>Навички</h2>
+
+            <h3>Мови програмування</h3>
+            <ul>
+                <li>Python — вмію працювати з мовою.</li>
+                <li>C# — вмію працювати з мовою.</li>
+            </ul>
+
+            <h3>Вивчені вебтехнології та бази даних</h3>
+            <ul>
+                <li>HTML — розмітка вебсторінок.</li>
+                <li>CSS — оформлення вебсторінок.</li>
+                <li>PHP — програмування серверної частини сайтів.</li>
+                <li>MySQL — реляційні бази даних.</li>
+            </ul>
+        </section>
+
+        <section id="experience" class="card">
+            <h2>Практичний досвід</h2>
+            <h3>Навчальна практика веброзробки</h3>
+            <p>
+                Під час вивчення вебтехнологій пробував розробляти сайти.
+                Маю початковий досвід створення вебсторінок.
+            </p>
+        </section>
+        <section id="reviews" class="card wide">
+            <h2>Відгуки роботодавців</h2>
+            <p>Навчальні вигадані відгуки з JSONPlaceholder · варіант 15.</p>
+            <p id="reviews-status" role="status">Завантаження…</p>
+            <button id="reviews-retry" type="button" hidden>Спробувати ще раз</button>
+            <div id="reviews-list"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Остап Левинець. Лабораторна робота №4 · варіант 15 з вебпрограмування.</p>
+        <p><a href="#top">На початок сторінки ↑</a></p>
+        <details class="wide"><summary>Системна інформація та localStorage</summary><div id="storage-info"></div></details>
+    </footer>
+    <dialog id="contact-dialog" aria-labelledby="contact-title">
+        <button id="contact-close" class="close" type="button" aria-label="Закрити">×</button>
+        <h2 id="contact-title">Зворотний зв’язок</h2>
+        <p>Залиш повідомлення для Остапа.</p>
+        <form id="contact-form" method="POST">
+            <label>Ім’я<input name="name" autocomplete="name" required maxlength="100"></label>
+            <label>Email<input type="email" name="email" autocomplete="email" required></label>
+            <label>Номер телефону<input type="tel" name="phone" autocomplete="tel" required pattern="[+0-9() .-]{7,25}" title="Від 7 до 25 символів: цифри, +, пробіли, дужки або дефіс"></label>
+            <label>Повідомлення<textarea name="message" rows="4" required maxlength="5000"></textarea></label>
+            <button type="submit">Надіслати</button>
+            <p id="form-status" role="status"></p>
+        </form>
+    </dialog>
+</body>
+</html>

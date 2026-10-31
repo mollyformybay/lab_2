@@ -1,0 +1,112 @@
+/* Блокова модель: padding і border входять у ширину елемента. */
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 40px 24px;
+    font-family: "Segoe UI", Arial, sans-serif;
+    line-height: 1.7;
+    color: #475569;
+    background: #eef2f6;
+}
+/* Селектори класів. */
+.profile-header {
+    padding: 40px;
+    color: #fff;
+    background: #0f2933;
+    border: 1px solid #23444d;
+    border-radius: 20px;
+}
+.eyebrow {
+    margin: 0 0 18px;
+    color: #a7f3d0;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+h1 { margin: 0 0 8px; font-size: clamp(30px, 5vw, 48px); line-height: 1.15; }
+.subtitle { margin: 0; font-size: 18px; }
+nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 28px 0 0;
+    padding: 0;
+    list-style: none;
+}
+a { color: #0f766e; text-decoration: none; }
+/* Селектор атрибута для внутрішніх посилань навігації. */
+nav a[href^="#"] {
+    display: block;
+    padding: 8px 14px;
+    color: #e2e8f0;
+    border: 1px solid #47606a;
+    border-radius: 8px;
+    transition: background-color 160ms, color 160ms;
+}
+/* Псевдокласи: наведення та фокус клавіатури. */
+nav a:hover { color: #0f2933; background: #a7f3d0; }
+a:hover { text-decoration: underline; }
+a:focus-visible { outline: 3px solid #14b8a6; outline-offset: 4px; }
+/* Дві колонки на широкому екрані, без float. */
+main { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin: 24px 0; }
+.card {
+    min-width: 0;
+    padding: 28px;
+    background: #fff;
+    border: 1px solid #dce3ea;
+    border-radius: 16px;
+    box-shadow: 0 4px 18px rgb(15 23 42 / 4%);
+    scroll-margin-top: 24px;
+}
+/* Селектор ID. */
+#about { grid-column: 1 / -1; border-left: 4px solid #0f766e; }
+#experience { grid-column: 1 / -1; }
+h2 { margin: 0 0 16px; color: #0f2933; font-size: 23px; line-height: 1.3; }
+h3 { margin: 20px 0 8px; color: #334155; font-size: 17px; line-height: 1.5; }
+p { margin: 8px 0; }
+main ul { margin: 12px 0 0; padding-left: 22px; }
+main li { margin-bottom: 8px; }
+main li::marker { color: #0f766e; }
+footer { display: flex; justify-content: space-between; gap: 16px; padding: 16px 0; font-size: 14px; }
+/* Медіазапит змінює макет на одну колонку. */
+@media (max-width: 640px) {
+    body { padding: 16px; }
+    .profile-header { padding: 28px 22px; }
+    main { grid-template-columns: 1fr; gap: 16px; margin: 16px 0; }
+    .card { padding: 22px; }
+    nav ul { flex-direction: column; }
+    footer { flex-direction: column; gap: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    nav a { transition: none; }
+}
+
+/* Доповнення лабораторної №4: теми, відгуки та доступний dialog. */
+:root { color-scheme: light; }
+:root[data-theme="dark"] { color-scheme: dark; }
+[data-theme="dark"] body { background: #0d1720; color: #cbd5e1; }
+[data-theme="dark"] .card, [data-theme="dark"] dialog { background: #172630; border-color: #36505d; color: #cbd5e1; }
+[data-theme="dark"] h2, [data-theme="dark"] h3 { color: #e2f5ee; }
+[data-theme="dark"] a { color: #8de3ce; }
+.controls { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 24px; }
+button { padding: 10px 16px; border: 1px solid #0f766e; border-radius: 8px; background: #0f766e; color: white; font: inherit; cursor: pointer; }
+button:hover { background: #115e59; }
+button:disabled { opacity: .6; cursor: wait; }
+button:focus-visible, input:focus-visible, textarea:focus-visible, summary:focus-visible { outline: 3px solid #14b8a6; outline-offset: 3px; }
+.wide { grid-column: 1 / -1; width: 100%; }
+footer { flex-wrap: wrap; }
+pre { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 12px; }
+summary { cursor: pointer; }
+.review { border-top: 1px solid #78938e66; margin-top: 20px; padding-top: 8px; overflow-wrap: anywhere; }
+.review-email { color: #0f766e; font-size: 14px; }
+[data-theme="dark"] .review-email { color: #8de3ce; }
+dialog { width: min(520px, calc(100% - 32px)); max-height: 90vh; overflow-y: auto; padding: 30px; border: 1px solid #dce3ea; border-radius: 16px; color: #475569; background: white; }
+dialog::backdrop { background: #07151dbb; backdrop-filter: blur(4px); }
+.close { float: right; padding: 2px 12px; font-size: 24px; }
+label { display: grid; gap: 5px; margin: 14px 0; font-weight: 600; }
+input, textarea { width: 100%; min-width: 0; padding: 10px; font: inherit; border: 1px solid #8ba09d; border-radius: 8px; background: transparent; color: inherit; }
+textarea { resize: vertical; }
